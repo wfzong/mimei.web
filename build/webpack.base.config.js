@@ -5,8 +5,11 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
 const isProd = process.env.NODE_ENV === 'production'
-
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
 module.exports = {
+  context: path.resolve(__dirname, '../'),
   devtool: isProd ? false : '#cheap-module-source-map',
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -15,7 +18,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      public: path.resolve(__dirname, '../public')
+      // public: path.resolve(__dirname, '../public'),
+      public: resolve('public'),
+      '@': resolve('src')
     }
   },
   module: {

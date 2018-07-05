@@ -3,8 +3,8 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const List = () => import('../views/List.vue')
-const Details = () => import('../views/Details.vue')
+const List = () => import('@/view/List.vue')
+const Details = () => import('@/view/Details.vue')
 
 export function createRouter() {
   return new Router({
