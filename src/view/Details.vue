@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h1>{{item.title}}</h1>
+    <div v-html="item.content"></div>
     details: {{item}} -
     <input v-model="msg"> {{msg}}
   </div>
