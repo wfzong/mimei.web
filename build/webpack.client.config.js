@@ -8,6 +8,11 @@ const config = merge(base, {
   entry: {
     app: './src/entry-client.js'
   },
+  resolve: {
+    alias: {
+      'create-api': './http-client.js'
+    }
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(

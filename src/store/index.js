@@ -12,7 +12,7 @@ export function createStore () {
       activeType: null,
       itemsPerPage: 20,
       items: {/* [id: number]: Item */},
-      lists: {}
+      lists: []
     },
     actions,
     mutations,

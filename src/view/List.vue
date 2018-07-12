@@ -1,8 +1,9 @@
 <template>
   <div>
     {{list}} 列表页
-    <div>{{msg}}
-    </div>
+    <ul>
+      <!-- <li v-for="(item,key) in list" :key="key">{{item.title}}</li> -->
+    </ul>
   </div>
 </template>
 <script>
@@ -15,7 +16,7 @@ export default {
   },
   computed: {
     list () {
-      return this.$store.state.list
+      return this.$store.state.lists
       // return 'text'
     }
   },

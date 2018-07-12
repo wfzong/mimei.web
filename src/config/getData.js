@@ -1,4 +1,4 @@
-import axios from '@/config/http'
+import api from 'create-api'
 // import axios from 'axios'
 
 const host = 'https://api.mimei.net.cn/api/v1'
@@ -14,10 +14,9 @@ export const getData = (url = '', data = {}, type = 'GET') => {
     }
     url = url + '?' + queryArr.join('&')
   }
-  return axios({
+  return api({
     method: type,
     url: url,
     data: data
   })
-  // return new Promise(resolve => resolve('yes'))
 }

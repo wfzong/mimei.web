@@ -4,7 +4,7 @@ export default {
   FETCH_LIST_DATA: ({ commit, dispatch, state }, data) => {
     let res = getArticleList(data).then(list => {
       console.log('list: ', list)
-      return commit('SET_LIST', 'info', list)
+      return commit('SET_LIST', list)
     })
     return res
   },
