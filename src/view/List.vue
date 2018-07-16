@@ -1,6 +1,11 @@
 <template>
   <div>
-    {{list}} 列表页
+     列表页
+    <ul>
+      <li v-for="(item, index) in list.list">
+        <router-link :to="'/details/'+item.id">{{item.title}}</router-link>
+      </li>
+    </ul>
     <ul>
       <!-- <li v-for="(item,key) in list" :key="key">{{item.title}}</li> -->
     </ul>
@@ -26,12 +31,18 @@ export default {
     // console.log('YESSS')
   },
   beforeMount () {
-    this.fetchList()
+    // this.fetchList()
+    console.log('this.$root._isMounted: ', this.$root._isMounted)
+    if(this.$root._isMounted){
+
+    } else {
+      
+    }
   },
   methods: {
-    fetchList () {
+    // fetchList () {
 
-    }
+    // }
   }
 }
 </script>

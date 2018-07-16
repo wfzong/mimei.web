@@ -1,9 +1,11 @@
-import api from 'create-api'
+import { createAPI } from 'create-api'
 // import axios from 'axios'
 
 const host = 'https://api.mimei.net.cn/api/v1'
 
 export const getData = (url = '', data = {}, type = 'GET') => {
+  console.log('getData executed...')
+  let api = createAPI()
   type = type.toUpperCase()
   url = host + url
   if (type === 'GET' && Object.keys(data).length) {

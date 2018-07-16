@@ -81,6 +81,7 @@ function render(req, res) {
     } else {
       res.status(500).send('500 | Internal Server Error')
       console.error(`error during render : ${req.url}`)
+      console.error(err)
       console.error(err.stack)
     }
   }
