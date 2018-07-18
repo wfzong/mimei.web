@@ -26,7 +26,7 @@ export default {
     }
   },
   asyncData ({ store }) {
-    // console.log('store: ', store)
+    console.log('asyncData执行--------------')
     return store.dispatch('FETCH_LIST_DATA', { limit: 5 })
     // console.log('YESSS')
   },

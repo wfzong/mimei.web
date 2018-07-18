@@ -4,6 +4,7 @@
     <div v-html="item.content"></div>
     details: {{item}} -
     <input v-model="msg"> {{msg}}
+    <router-link to="/details/5">GOOOO</router-link>
   </div>
 </template>
 
