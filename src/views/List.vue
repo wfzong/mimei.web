@@ -1,7 +1,7 @@
 <template>
   <div>
      列表页
-    <ul>
+    <ul class="list">
       <li v-for="(item, index) in list.list">
         <router-link :to="'/details/'+item.id">{{item.title}}</router-link>
       </li>
@@ -46,3 +46,13 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.list {
+  li {
+    font-size: 22px;
+    a {
+      color: red;
+    }
+  }
+}
+</style>

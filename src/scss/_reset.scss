@@ -1,0 +1,109 @@
+@import "./common/_variable.scss";
+@import "./common/_mixin.scss";
+
+body {
+    font-size: $MASTER_FONT_SIZE;
+    margin: $MARGIN_NONE;
+    padding: $PADDING_NONE;
+}
+ul,li {
+    margin: $MARGIN_NONE;
+    padding: $PADDING_NONE;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+img {
+    border: none;
+}
+h1,h2,h3,h4,h5,h6 {
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: auto;
+    font-variant-ligatures: common-ligatures;
+    color: black;
+    margin:0;
+    padding: 0;
+}
+
+
+%h-alpha {
+    @include font(null,45px, 300, 45px);
+    @include min-screen($SECTION_WIDTH_LARGE) {
+        @include font-size(80px);
+        @include line-height(80px);
+    }
+}
+
+%h-beta {
+    @include font("NEW GROTESK SQUARE", 40px, 300, 40px);
+    @include min-screen($SECTION_WIDTH_LARGE) {
+        @include font-size(60px);
+        @include line-height(60px);
+    }
+}
+
+%h-gamma {
+    @include font("NEW GROTESK SQUARE", 35px, 300, 35px);
+    @include min-screen($SECTION_WIDTH_LARGE) {
+        @include font-size(40px);
+        @include line-height(40px);
+    }
+}
+
+%h-delta {
+    @include font("NEW GROTESK SQUARE", 30px, 300, 30px);
+    @include min-screen($SECTION_WIDTH_LARGE) {
+        @include font-size(35px);
+        @include line-height(35px);
+    }
+}
+
+%h-epsilon {
+    @include font("NEW GROTESK SQUARE", 25px, 300, 25px);
+    @include min-screen($SECTION_WIDTH_LARGE) {
+        @include font-size(30px);
+        @include line-height(30px);
+    }
+}
+
+%h-zeta {
+    @include font("NEW GROTESK SQUARE", 20px, 300, 20px);
+    @include min-screen($SECTION_WIDTH_LARGE) {
+        @include font-size(25px);
+        @include line-height(25px);
+    }
+}
+
+h1, .h-alpha {
+    @extend %h-alpha;
+}
+
+h2, .h-beta {
+    @extend %h-beta;
+}
+
+h3, .h-gamma {
+    @extend %h-gamma;
+}
+
+h4, .h-delta {
+    @extend %h-delta;
+}
+
+h5, .h-epsilon {
+    @extend %h-epsilon;
+}
+
+h6, .h-zeta {
+    @extend %h-zeta;
+}
+
+.has-open-menu {
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }

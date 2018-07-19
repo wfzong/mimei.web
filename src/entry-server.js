@@ -8,9 +8,11 @@ export default context => {
     const { app, router, store } = createApp()
     const { url } = context
     const { fullPath } = router.resolve(url).route
-    if (fullPath !== url) {
-      return reject(new Error({ url: fullPath }))
-    }
+    console.log('fullPath#### ', fullPath)
+    console.log('url#### ', url)
+    // if (fullPath !== url) {
+    //   return reject(new Error({ url: fullPath }))
+    // }
 
     // set router's location
     router.push(url)

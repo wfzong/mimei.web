@@ -1,0 +1,106 @@
+
+$MASTER_FONT_SIZE: 16px;
+
+/* 导航高度 */
+$MAIN_NAVIGATION_HEIGHT:60px !default;
+
+/* 导航各临界点切换值 */
+$NAVIGATION_BREAKPOINT_MAX:1440px !default;
+$NAVIGATION_BREAKPOINT_LARGE:1024px !default;
+$NAVIGATION_BREAKPOINT_MEDIUM:700px !default;
+
+/* 主体区域临界点切换值 */
+$SECTION_WIDTH_MAXIMUM: 1440px !default;
+$SECTION_WIDTH_LARGE: 1024px !default;
+$SECTION_WIDTH_MEDIUM: 700px !default;
+
+// Gutters to use on the desktop sized site
+$DESKTOP_SIDE_GUTTER: 50px !default;
+// Gutters to use on the tablet sized site
+$TABLET_SIDE_GUTTER: 40px !default;
+// Gutters to use on the mobile sized site
+$MOBILE_SIDE_GUTTER: 20px !default;
+
+// Margins to use on the desktop sized site
+$DESKTOP_SLICE_MARGIN: 50px !default;
+// Margins to use on the tablet sized site
+$TABLET_SLICE_MARGIN: 40px !default;
+// Margins to use on the mobile sized site
+$MOBILE_SLICE_MARGIN: 20px !default;
+
+
+/* 图片列表条目切换值 */
+$CARD_LIST_2_COLUMN_BREAKPOINT: 600px  !default;
+$CARD_LIST_3_COLUMN_BREAKPOINT: 940px  !default;
+$CARD_LIST_4_COLUMN_BREAKPOINT: 1100px !default;
+$CARD_LIST_5_COLUMN_BREAKPOINT: 1200px !default;
+
+/**
+ * MARGINS
+ * =============================================================================
+ */
+ $MARGIN_XXX_LARGE: 120px !default;
+ $MARGIN_XX_LARGE: 80px !default;
+ $MARGIN_X_LARGE: 60px !default;
+ $MARGIN_LARGE: 40px !default;
+ $MARGIN_MEDIUM: 30px !default;
+ $MARGIN_SMALL: 20px !default;
+ $MARGIN_X_SMALL: 15px !default;
+ $MARGIN_XX_SMALL: 10px !default;
+ $MARGIN_XXX_SMALL: 5px !default;
+ $MARGIN_NONE: 0 !default;
+
+ /**
+ * PADDINGS
+ * =============================================================================
+ */
+$PADDING_XXX_LARGE: 120px !default;
+$PADDING_XX_LARGE: 80px !default;
+$PADDING_X_LARGE: 60px !default;
+$PADDING_LARGE: 40px !default;
+$PADDING_MEDIUM: 30px !default;
+$PADDING_SMALL: 20px !default;
+$PADDING_X_SMALL: 15px !default;
+$PADDING_XX_SMALL: 10px !default;
+$PADDING_XXX_SMALL: 5px !default;
+$PADDING_NONE: 0 !default;
+
+
+
+
+/**
+ * Font weights
+ */
+ $FONT_WEIGHT_THIN: 100;
+ $FONT_WEIGHT_EXTRA_LIGHT: 200;
+ $FONT_WEIGHT_LIGHT: 300;
+ $FONT_WEIGHT_NORMAL: 400;
+ $FONT_WEIGHT_BOOK: 400;
+ $FONT_WEIGHT_MEDIUM: 500;
+ $FONT_WEIGHT_SEMI_BOLD: 600;
+ $FONT_WEIGHT_DEMI_BOLD: 600;
+ $FONT_WEIGHT_BOLD: 700;
+ $FONT_WEIGHT_BLACK: 800;
+ $FONT_WEIGHT_FAT: 800;
+ $FONT_WEIGHT_EXTRA_BOLD: 800;
+ $FONT_WEIGHT_ULTRA: 900;
+ 
+ 
+ $FONT_WEIGHTS: (
+     'THIN': $FONT_WEIGHT_THIN,
+     'EXTRA LIGHT': $FONT_WEIGHT_EXTRA_LIGHT,
+     'LIGHT': $FONT_WEIGHT_LIGHT,
+     'NORMAL': $FONT_WEIGHT_NORMAL,
+     'BOOK': $FONT_WEIGHT_BOOK,
+     'MEDIUM': $FONT_WEIGHT_MEDIUM,
+     'SEMI BOLD': $FONT_WEIGHT_SEMI_BOLD,
+     'DEMI BOLD': $FONT_WEIGHT_DEMI_BOLD,
+     'BOLD': $FONT_WEIGHT_BOLD,
+     'BLACK': $FONT_WEIGHT_BLACK,
+     'FAT': $FONT_WEIGHT_FAT,
+     'EXTRA BOLD': $FONT_WEIGHT_EXTRA_BOLD,
+     'ULTRA': $FONT_WEIGHT_ULTRA
+ );
+ 
+ $FONT_FAMILY: PingFang SC,Hiragino Sans GB,Arial,Microsoft YaHei,Helvetica Neue,sans-serif;
+ 

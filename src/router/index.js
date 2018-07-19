@@ -3,8 +3,9 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const List = () => import('@/view/List.vue')
-const Details = () => import('@/view/Details.vue')
+const Home = () => import('@/views/Home.vue')
+const List = () => import('@/views/List.vue')
+const Details = () => import('@/views/Details.vue')
 
 export function createRouter() {
   return new Router({
@@ -12,7 +13,7 @@ export function createRouter() {
     fallback: false,
     scrollBehavior: () => ({ y: 0 }),
     routes: [
-      { path: '/', redirect: '/list' },
+      { path: '/', component: Home },
       { path: '/list', component: List },
       { path: '/details/:id', component: Details }
     ]
