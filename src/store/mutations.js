@@ -18,8 +18,8 @@ export default {
   },
   // 初始化用户信息
   initToken: state => {
-    state.token = window.$cookies.get('think_token')
-    state.userinfo = JSON.parse(window.$cookies.get('userinfo'))
+    // state.token = window.$cookies.get('think_token')
+    // state.userinfo = JSON.parse(window.$cookies.get('userinfo'))
     state.initLogin = true
   }
 }

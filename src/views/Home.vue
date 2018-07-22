@@ -1,6 +1,6 @@
 <template>
     <section>
-        HOME
+        <HeaderEle></HeaderEle>
         <FooterEle></FooterEle>
     </section>
 </template>
@@ -8,6 +8,6 @@
 import HeaderEle from "@/components/Header.vue";
 import FooterEle from "@/components/Footer.vue";
 export default {
-    components:{FooterEle}
+    components:{FooterEle, HeaderEle}
 }
 </script>
