@@ -15,5 +15,9 @@ export default {
       console.log('#######', item)
       commit('SET_ITEM', { id: data.id, item })
     })
+  },
+  FETCH_INDEX_DATA: ({ commit }) => {
+    console.log('FETCH_INDEX_DATA executed...')
+    return true
   }
 }
