@@ -1,0 +1,170 @@
+<template>
+  <canvas id="canvasLogo" width="100" height="72">
+    <img src="@/images/elements/logo.png">
+  </canvas>
+</template>
+<script>
+import * as unity from "@/tools/unity";
+
+export default {
+  mounted(){
+    let ba = new unity.Balls("canvasLogo")
+
+    ba.addBall({
+        init:{
+            x:50,
+            y:36,
+            radius:10,
+            opacity:1
+        },
+        to:{
+            x:50,
+            y:36,
+            radius:20,
+            opacity:0.6,
+            duration:1000,
+            next:{
+                x:50,
+                y:36,
+                radius:10,
+                opacity:1,
+                duration:1000,
+                next:{
+                    x:50,
+                    y:36,
+                    radius:20,
+                    opacity:0.6,
+                    duration:1000,
+                    next:{
+                        x:50,
+                        y:36,
+                        radius:10,
+                        opacity:1,
+                        duration:1000,
+                        next:{
+                            x:39,
+                            y:36,
+                            radius:10,
+                            opacity:1,
+                            duration:500,
+                            delay:500,
+                            next:{
+                                x:39,
+                                y:24,
+                                radius:20,
+                                opacity:0.75,
+                                duration:500,
+                                delay:800,
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        rgb:{
+            R:22,
+            G:151,
+            B:65
+        }
+    })
+    
+    ba.addBall({//第二个球
+        init:{
+            x:50,
+            y:36,
+            radius:5,
+            opacity:0,
+            delay:3000
+        },
+        to:{
+            x:15,
+            y:36,
+            radius:5,
+            opacity:0.6,
+            duration:1000,
+            delay:4000,
+            next:{
+                x:16,
+                y:56,
+                radius:8,
+                opacity:0.8,
+                duration:500,
+                delay:800,
+            }
+        },
+        rgb:{
+            R:214,
+            G:110,
+            B:42
+        }
+    })
+    
+    ba.addBall({//第三个球，小红球
+        init:{
+            x:50,
+            y:36,
+            radius:5,
+            opacity:0,
+            delay:3000
+        },
+        to:{
+            x:53,
+            y:36,
+            radius:5,
+            opacity:0.6,
+            duration:1000,
+            delay:4000,
+            next:{
+                x:53,
+                y:53,
+                radius:10,
+                opacity:0.83,
+                duration:500,
+                delay:800,
+            }
+        },
+        rgb:{
+            R:207,
+            G:67,
+            B:112
+        }
+    })
+    
+    ba.addBall({//第四个球，小红球
+        init:{
+            x:50,
+            y:36,
+            radius:5,
+            opacity:0,
+            delay:3000
+        },
+        to:{
+            x:76,
+            y:36,
+            radius:5,
+            opacity:0.6,
+            duration:1000,
+            delay:4000,
+            next:{
+                x:76.5,
+                y:53.5,
+                radius:16.5,
+                opacity:0.87,
+                duration:500,
+                delay:800,
+            }
+        },
+        rgb:{
+            R:22,
+            G:152,
+            B:65
+        }
+    })
+    
+
+
+    ba.start()
+
+  }
+}
+</script>

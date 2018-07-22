@@ -81,7 +81,7 @@
 
 
 <script>
-import LoginTrigger from "@/components/common/LoginTrigger";
+import LoginTrigger from "@/components/common/LoginTrigger.vue";
 import LogoCanvas from "@/components/common/LogoCanvas.vue";
 
 export default {
@@ -261,7 +261,7 @@ export default {
           vertical-align: middle;
           overflow: hidden;
           text-indent: 100em;
-          background: url(@/images/elements/nav_icon.png) 0 0 no-repeat;
+          background: url(~@/images/elements/nav_icon.png) 0 0 no-repeat;
           background-size: 40px;
         }
         &.close {
