@@ -18,6 +18,14 @@ export default {
   },
   FETCH_INDEX_DATA: ({ commit }) => {
     console.log('FETCH_INDEX_DATA executed...')
-    return true
+    let bigImgList = getArticleList({
+      artType: 'photos',
+      recommend: 1,
+      limit: 4
+    }).then(res => {
+      // console.log(res)
+      commit('SET_INDEX_BIG_IMG_LIST', res.list)
+    })
+    return Promise.all([bigImgList])
   }
 }

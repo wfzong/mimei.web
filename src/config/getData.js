@@ -4,10 +4,11 @@ import { createAPI } from 'create-api'
 const host = 'https://api.mimei.net.cn/api/v1'
 
 export const getData = (url = '', data = {}, type = 'GET') => {
-  console.log('getData executed...')
+  console.log('getData executed... ')
   let api = createAPI()
   type = type.toUpperCase()
   url = host + url
+
   if (type === 'GET' && Object.keys(data).length) {
     // 将 query 字符串拼接
     let queryArr = []

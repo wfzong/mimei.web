@@ -1,6 +1,10 @@
 import Vue from 'vue'
 
 export default {
+  SET_INDEX_BIG_IMG_LIST: (state, list) => {
+    // console.log('SET_INDEX_BIG_IMG_LIST exec', list)
+    state.indexBigImgList = list
+  },
   SET_LIST: (state, list) => {
     // Vue.set(state.lists, key, list)
     state.lists = list

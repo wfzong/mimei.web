@@ -1,6 +1,7 @@
 <template>
     <section>
         <HeaderEle></HeaderEle>
+        {{bigImgList}}
         <FooterEle></FooterEle>
     </section>
 </template>
@@ -11,6 +12,11 @@ export default {
     components:{FooterEle, HeaderEle},
     asyncData({store}){
         return store.dispatch('FETCH_INDEX_DATA')
+    },
+    computed:{
+        bigImgList: function() {
+            return this.$store.state.indexBigImgList
+        }
     }
 }
 </script>

@@ -9,10 +9,6 @@ import { getData } from '@/config/getData'
  * @returns {JSON} {}
  */
 export const getArticleList = data => getData('/article/', data)
-// export const getArticleList = () =>
-//   new Promise(resolve => {
-//     resolve('yes')
-//   })
 
 /**
  * @description 查询详细信息
