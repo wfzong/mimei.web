@@ -12,7 +12,7 @@ export default {
   FETCH_ITEM: ({ commit }, data) => {
     console.log('FETCH_ITEM executed...')
     return getArticleDetails(data).then(item => {
-      console.log('#######', item)
+      // console.log('#######', item)
       commit('SET_ITEM', { id: data.id, item })
     })
   },

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 axios.interceptors.response.use(
   res => {
-    console.log('response client 执行 ...', res)
+    console.log('response client 执行 ... res.data')
     return res.data
   },
   error => {

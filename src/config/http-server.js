@@ -7,7 +7,7 @@ export function createAPI() {
   } else {
     axios.interceptors.response.use(
       res => {
-        console.log('response client 执行 ... server~~: ', res.data)
+        console.log('response client 执行 ... server~~: res.data')
         return res.data
       },
       error => {

@@ -17,11 +17,13 @@ export default {
   },
   asyncData ({ store, route }) {
     console.log('################# route.params.id:', route.params.id)
-    return store.dispatch('FETCH_ITEM', { id: route.params.id })
+    let item = store.dispatch('FETCH_ITEM', { id: route.params.id })
+    return Promise.all([item])
+    // return false
   },
   computed: {
     item () {
-      console.log('#######this.$store.state: ', this.$store.state)
+      console.log('#######this.$store.state: ')
       return this.$store.state.items[this.$route.params.id]
       // return this.$store.state
     }
