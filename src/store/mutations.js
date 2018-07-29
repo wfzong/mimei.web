@@ -5,6 +5,15 @@ export default {
     // console.log('SET_INDEX_BIG_IMG_LIST exec', list)
     state.indexBigImgList = list
   },
+  SET_INDEX_REC_ARTICLE_LIST: (state, list) => {
+    state.indexRecArticleList = list
+  },
+  SET_INDEX_NEW_ARTICLES_LIST: (state, list) => {
+    state.indexNewArticlesList = list
+  },
+  SET_INDEX_NEW_IMAGES_LIST: (state, list) => {
+    state.indexNewImagesList = list
+  },
   SET_LIST: (state, list) => {
     // Vue.set(state.lists, key, list)
     state.lists = list

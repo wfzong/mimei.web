@@ -7,10 +7,10 @@
     <nav class="big">
                 <ul>
                     <li>
-                        <router-link :to="{path:'/list',query:{'arttype':'normal'}}">最新文章</router-link>
+                        <router-link :to="{path:'/list/',query:{'artType':'normal'}}">最新文章</router-link>
                     </li>
                     <li>
-                        <router-link :to="{path:'/list',query:{'arttype':'photos'}}">最新图集</router-link>
+                        <router-link :to="{path:'/list/',query:{'artType':'photos'}}">最新图集</router-link>
                     </li>
                     <li>
                         <router-link :to="{path:'/list',query:{'categories':4}}">写真</router-link>
@@ -81,30 +81,30 @@
 
 
 <script>
-import LoginTrigger from "@/components/common/LoginTrigger.vue";
-import LogoCanvas from "@/components/common/LogoCanvas.vue";
+import LoginTrigger from '@/components/common/LoginTrigger.vue'
+import LogoCanvas from '@/components/common/LogoCanvas.vue'
 
 export default {
   data() {
     return {
       MobileMenuOpened: false
-    };
+    }
   },
   methods: {
     MenuTrigger: function() {
-      this.MobileMenuOpened = !this.MobileMenuOpened;
-      this.$emit("MenuTrigger", this.MobileMenuOpened); //通知父级，改变了menu状态
+      this.MobileMenuOpened = !this.MobileMenuOpened
+      this.$emit('MenuTrigger', this.MobileMenuOpened) // 通知父级，改变了menu状态
     },
     CloseMenu() {
-      this.MobileMenuOpened = false;
-      this.$emit("MenuTrigger", this.MobileMenuOpened); //通知父级，改变了menu状态
+      this.MobileMenuOpened = false
+      this.$emit('MenuTrigger', this.MobileMenuOpened) // 通知父级，改变了menu状态
     }
   },
   components: {
     LoginTrigger,
     LogoCanvas
   }
-};
+}
 </script>
 
 <style lang="scss">

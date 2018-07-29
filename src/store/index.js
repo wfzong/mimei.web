@@ -10,6 +10,9 @@ export function createStore() {
   return new Vuex.Store({
     state: {
       indexBigImgList: [],
+      indexRecArticleList: [],
+      indexNewArticlesList: [],
+      indexNewImagesList: [],
       activeType: null,
       itemsPerPage: 20,
       items: {

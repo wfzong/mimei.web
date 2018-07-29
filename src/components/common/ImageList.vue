@@ -1,34 +1,37 @@
 <template>
-    <div class="card_content">
-		<ul class="image_card_list">
-			
-            <li v-for="(item,index) in imgList" :key="index" :class="{card_item:true, card_item_switcher:index!=0}">
-                <article>
-					<div class="card_item_image">
-						<router-link :to="{path:'item/'+item.id}">
-                        <img :src="baseUrl+(JSON.parse(item.imgShow)).imgHash+'?imageView2/1/w/500/h/500'" />
-                        </router-link>
-					</div>
-                    <div class="card_item_info">
-						<h3> <router-link :to="{path:'item/'+item.id}">{{item.title}}</router-link> </h3>
-						<aside>
-							<p class="auth"><span>by</span>{{item.user.nickname}}</p>
-							<p class="parts">
-								<router-link :to="{path:'list',query:{'categories':citem.id}}" v-for="(citem,cindex) in item.categories" :key="cindex">
+  <div class="card_content">
+    <ul class="image_card_list">
+
+      <li v-for="(item,index) in imgList" :key="index" :class="{card_item:true, card_item_switcher:index!=0}">
+        <article>
+          <div class="card_item_image">
+            <router-link :to="{path:'item/'+item.id}">
+              <img :src="baseUrl+(JSON.parse(item.imgShow)).imgHash+'?imageView2/1/w/500/h/500'" />
+            </router-link>
+          </div>
+          <div class="card_item_info">
+            <h3>
+              <router-link :to="{path:'item/'+item.id}">{{item.title}}</router-link>
+            </h3>
+            <aside>
+              <p class="auth">
+                <span>by</span>{{item.user.nickname}}</p>
+              <p class="parts">
+                <router-link :to="{path:'list',query:{'categories':citem.id}}" v-for="(citem,cindex) in item.categories" :key="cindex">
                   {{citem.title}}
-								</router-link>
-                                <span class="times">{{item.update_time}}</span>
-                            </p>
-						</aside>
-					</div>
-                </article>
-            </li>
-            
-		</ul>
-	</div>
+                </router-link>
+                <span class="times">{{item.update_time}}</span>
+              </p>
+            </aside>
+          </div>
+        </article>
+      </li>
+
+    </ul>
+  </div>
 </template>
 <script>
-import * as config from "@/config/config.js";
+import * as config from '@/config/config.js'
 
 export default {
   props: {
@@ -37,11 +40,11 @@ export default {
     }
   },
   computed: {
-    baseUrl() {
-      return config.baseImgUri;
+    baseUrl () {
+      return config.baseImgUri
     }
   }
-};
+}
 </script>
 
 
@@ -125,7 +128,7 @@ export default {
                 }
               }
               .times {
-                color:#666;
+                color: #666;
               }
             }
           }

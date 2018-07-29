@@ -1,37 +1,47 @@
 <template>
-    <div :class="{'has-open-menu':MobileMenuOpened}">
-        <header-ele @MenuTrigger="MenuTrigger"></header-ele>
+  <div :class="{'has-open-menu':MobileMenuOpened}">
+    <header-ele @MenuTrigger="MenuTrigger"></header-ele>
 
-        <image-section :list="bigImgList"></image-section>
-        <!-- <article-and-more-section></article-and-more-section> -->
+    <image-section :list="bigImgList"></image-section>
+    <article-and-more-section :list="recArticleList" :artList="indexNewArticles" :imgList="indexNewImages"></article-and-more-section>
 
-        <footer-ele/>
-    </div>
+    <footer-ele/>
+  </div>
 </template>
 <script>
-import HeaderEle from "@/components/Header.vue";
-import FooterEle from "@/components/Footer.vue";
-import ImageSection from "@/components/accessories/ImageSection.vue"
+import HeaderEle from '@/components/Header.vue'
+import FooterEle from '@/components/Footer.vue'
+import ImageSection from '@/components/accessories/ImageSection.vue'
+import ArticleAndMoreSection from '@/components/accessories/ArticleAndMoreSection.vue'
 
 export default {
-    data() {
-        return {
-        MobileMenuOpened: false
-        };
-    },
-    methods:{
-        MenuTrigger: function(status) {
-        this.MobileMenuOpened = status;
-        }
-    },
-    components:{FooterEle, HeaderEle,ImageSection},
-    asyncData({store}){
-        return store.dispatch('FETCH_INDEX_DATA')
-    },
-    computed:{
-        bigImgList: function() {
-            return this.$store.state.indexBigImgList
-        }
+  components: { FooterEle, HeaderEle, ImageSection, ArticleAndMoreSection },
+  data () {
+    return {
+      MobileMenuOpened: false
     }
+  },
+  computed: {
+    bigImgList: function () {
+      return this.$store.state.indexBigImgList
+    },
+    recArticleList: function () {
+      return this.$store.state.indexRecArticleList
+    },
+    indexNewArticles: function() {
+      return this.$store.state.indexNewArticlesList
+    },
+    indexNewImages: function() {
+      return this.$store.state.indexNewImagesList
+    }
+  },
+  methods: {
+    MenuTrigger: function (status) {
+      this.MobileMenuOpened = status
+    }
+  },
+  asyncData ({ store }) {
+    return store.dispatch('FETCH_INDEX_DATA')
+  }
 }
 </script>
