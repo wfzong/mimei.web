@@ -13,19 +13,19 @@
 <script>
 
 export default {
-    props:{
-        link:{
-            type:[String,Object]
-        },
-        title:{
-            type:String,
-            default:"MORE"
-        },
-        align:{
-            type:String,
-            default:"center"
-        }
+  props: {
+    link: {
+      type: [String, Object]
+    },
+    title: {
+      type: String,
+      default: 'MORE'
+    },
+    align: {
+      type: String,
+      default: 'center'
     }
+  }
 }
 </script>
 

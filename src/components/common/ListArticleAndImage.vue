@@ -6,19 +6,19 @@
 
           <div class="info">
             <div v-if="!!(JSON.parse(item.imgShow)).imgHash" class="img-show">
-              <router-link :to="{path:'item/'+item.id}">
+              <router-link :to="{path:'/item/'+item.id}">
                 <img :src="baseUrl+(JSON.parse(item.imgShow)).imgHash+'?imageView2/1/w/500/h/500'" />
               </router-link>
             </div>
             <div class="details">
               <h3>
-                <router-link :to="{path:'item/'+item.id}">{{item.title}}</router-link>
+                <router-link :to="{path:'/item/'+item.id}">{{item.title}}</router-link>
               </h3>
               <div class="copyright">
                 <span>by</span>{{item.user.nickname}}
               </div>
               <div class="accessories">
-                <router-link :to="{path:'list',query:{'categories':tag.id}}" v-for="(tag,index) in item.categories" :key="index">
+                <router-link :to="{path:'/list/',query:{'categories':tag.id}}" v-for="(tag,index) in item.categories" :key="index">
                   {{tag.title}}
                 </router-link>
                 <span>

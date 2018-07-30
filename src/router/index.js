@@ -5,7 +5,8 @@ Vue.use(Router)
 
 const Home = () => import('@/views/Home.vue')
 const List = () => import('@/views/List.vue')
-const Details = () => import('@/views/Details.vue')
+// const Details = () => import('@/views/Details.vue')
+const Item = () => import('@/views/Item.vue')
 
 export function createRouter() {
   return new Router({
@@ -15,7 +16,7 @@ export function createRouter() {
     routes: [
       { path: '/', component: Home },
       { path: '/list', component: List },
-      { path: '/details/:id', component: Details }
+      { path: '/item/:id', component: Item }
     ]
   })
 }

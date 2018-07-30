@@ -2,7 +2,7 @@
 <div class="article_list">
     
     <article class="film_review" v-for="(item,index) in artList" :key="index">
-        <header><h3><router-link :to="{path:'item/'+item.id}">{{item.title}}</router-link></h3></header>
+        <header><h3><router-link :to="{path:'/item/'+item.id}">{{item.title}}</router-link></h3></header>
         <section class="main_review" ><p v-html="item.description"></p></section>
         <footer>
             <p>

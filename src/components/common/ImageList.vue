@@ -5,19 +5,19 @@
       <li v-for="(item,index) in imgList" :key="index" :class="{card_item:true, card_item_switcher:index!=0}">
         <article>
           <div class="card_item_image">
-            <router-link :to="{path:'item/'+item.id}">
+            <router-link :to="{path:'/item/'+item.id}">
               <img :src="baseUrl+(JSON.parse(item.imgShow)).imgHash+'?imageView2/1/w/500/h/500'" />
             </router-link>
           </div>
           <div class="card_item_info">
             <h3>
-              <router-link :to="{path:'item/'+item.id}">{{item.title}}</router-link>
+              <router-link :to="{path:'/item/'+item.id}">{{item.title}}</router-link>
             </h3>
             <aside>
               <p class="auth">
                 <span>by</span>{{item.user.nickname}}</p>
               <p class="parts">
-                <router-link :to="{path:'list',query:{'categories':citem.id}}" v-for="(citem,cindex) in item.categories" :key="cindex">
+                <router-link :to="{path:'/list/',query:{'categories':citem.id}}" v-for="(citem,cindex) in item.categories" :key="cindex">
                   {{citem.title}}
                 </router-link>
                 <span class="times">{{item.update_time}}</span>

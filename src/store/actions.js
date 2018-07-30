@@ -44,5 +44,10 @@ export default {
       commit('SET_INDEX_NEW_IMAGES_LIST', res.list)
     })
     return Promise.all([bigImgList, recArticle, newArticles, newImages])
+  },
+  FETCH_ITEM_DATA({ commit }, data) {
+    return getArticleDetails(data).then(item => {
+      commit('SET_ITEM', { id: data.id, item })
+    })
   }
 }
