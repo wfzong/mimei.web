@@ -7,6 +7,11 @@ const Home = () => import('@/views/Home.vue')
 const List = () => import('@/views/List.vue')
 // const Details = () => import('@/views/Details.vue')
 const Item = () => import('@/views/Item.vue')
+const About = () => import('@/views/About.vue')
+const Contact = () => import('@/views/Contact.vue')
+const Privacy = () => import('@/views/Privacy.vue')
+const Copyright = () => import('@/views/Copyright.vue')
+const AuthLayout = () => import('@/views/AuthLayout.vue')
 
 export function createRouter() {
   return new Router({
@@ -15,8 +20,13 @@ export function createRouter() {
     scrollBehavior: () => ({ y: 0 }),
     routes: [
       { path: '/', component: Home },
-      { path: '/list', component: List },
-      { path: '/item/:id', component: Item }
+      { path: '/list/', component: List },
+      { path: '/item/:id', component: Item },
+      { path: '/about/', component: About },
+      { path: '/contact/', component: Contact },
+      { path: '/privacy/', component: Privacy },
+      { path: '/copyright/', component: Copyright },
+      { path: '/auth/', component: AuthLayout }
     ]
   })
 }
