@@ -12,6 +12,7 @@ const Contact = () => import('@/views/Contact.vue')
 const Privacy = () => import('@/views/Privacy.vue')
 const Copyright = () => import('@/views/Copyright.vue')
 const AuthLayout = () => import('@/views/AuthLayout.vue')
+const Login = () => import('@/views/Login.vue')
 
 export function createRouter() {
   return new Router({
@@ -26,7 +27,16 @@ export function createRouter() {
       { path: '/contact/', component: Contact },
       { path: '/privacy/', component: Privacy },
       { path: '/copyright/', component: Copyright },
-      { path: '/auth/', component: AuthLayout }
+      {
+        path: '/auth/',
+        component: AuthLayout,
+        children: [
+          {
+            path: 'login/',
+            component: Login
+          }
+        ]
+      }
     ]
   })
 }
