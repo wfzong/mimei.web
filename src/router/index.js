@@ -13,9 +13,10 @@ const Privacy = () => import('@/views/Privacy.vue')
 const Copyright = () => import('@/views/Copyright.vue')
 const AuthLayout = () => import('@/views/AuthLayout.vue')
 const Login = () => import('@/views/Login.vue')
+const UserCenter = () => import('@/views/UserCenter.vue')
 
 export function createRouter() {
-  return new Router({
+  let route = new Router({
     mode: 'history',
     fallback: false,
     scrollBehavior: () => ({ y: 0 }),
@@ -28,6 +29,13 @@ export function createRouter() {
       { path: '/privacy/', component: Privacy },
       { path: '/copyright/', component: Copyright },
       {
+        path: '/user/',
+        component: UserCenter,
+        meta: {
+          requireAuth: true
+        }
+      },
+      {
         path: '/auth/',
         component: AuthLayout,
         children: [
@@ -39,4 +47,9 @@ export function createRouter() {
       }
     ]
   })
+  route.beforeEach((to, from, next) => {
+    console.log('beforeEach exect...')
+    next()
+  })
+  return route
 }
