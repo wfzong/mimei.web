@@ -4,8 +4,5 @@ export default {
   },
   getUserInfo: s => {
     return s.userInfo
-  },
-  initedLogin: s => {
-    return s.initLogin
   }
 }

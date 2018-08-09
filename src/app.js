@@ -1,12 +1,16 @@
 import Vue from 'vue'
+import VueCookies from 'vue-cookies' // https://www.npmjs.com/package/vue-cookies
 import App from './App.vue'
 import { createStore } from './store'
 import { createRouter } from './router'
 import { sync } from 'vuex-router-sync'
-export function createApp() {
+
+Vue.use(VueCookies)
+
+export function createApp(cookies) {
   // create store and router instances
   const store = createStore()
-  const router = createRouter()
+  const router = createRouter(cookies)
   sync(store, router)
   const app = new Vue({
     router,

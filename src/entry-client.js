@@ -18,13 +18,19 @@ Vue.mixin({
     }
   }
 })
-
-const { app, router, store } = createApp()
+console.log('window.$cookies', window.$cookies.get('token'))
+const { app, router, store } = createApp(window.$cookies.get('token'))
 
 if (window.__INITIAL_STATE__) {
   store.replaceState(window.__INITIAL_STATE__)
   console.log('**************store.state: ', store.state)
 }
+console.log('###############', router)
+console.log('###############', router.app.$route)
+router.beforeEach((to, from, next) => {
+  console.log('beforeEach exect... store ', store.state.token)
+  next()
+})
 
 router.onReady(() => {
   router.beforeResolve((to, from, next) => {

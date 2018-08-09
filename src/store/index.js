@@ -15,12 +15,9 @@ export function createStore() {
       indexNewImagesList: [],
       activeType: null,
       itemsPerPage: 20,
-      items: {
-        /* [id: number]: Item */
-      },
+      items: {},
       lists: [],
       // 原有的数据
-      initLogin: false,
       token: null,
       userInfo: null
     },

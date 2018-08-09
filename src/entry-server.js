@@ -5,8 +5,8 @@ const isDev = process.env.NODE_ENV !== 'production'
 export default context => {
   return new Promise((resolve, reject) => {
     const s = isDev && Date.now()
-    const { app, router, store } = createApp()
-    const { url } = context
+    const { url, cookies } = context
+    const { app, router, store } = createApp(cookies && cookies.token)
     const { fullPath } = router.resolve(url).route
     console.log('fullPath#### ', fullPath)
     console.log('url#### ', url)
@@ -16,6 +16,8 @@ export default context => {
 
     // set router's location
     router.push(url)
+    console.log('context entry server:::', cookies)
+    store.commit('initToken', cookies) // 将cookie信息注册到store里
 
     // wait until router has resolved possible async hooks
     router.onReady(() => {

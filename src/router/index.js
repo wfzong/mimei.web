@@ -15,7 +15,7 @@ const AuthLayout = () => import('@/views/AuthLayout.vue')
 const Login = () => import('@/views/Login.vue')
 const UserCenter = () => import('@/views/UserCenter.vue')
 
-export function createRouter() {
+export function createRouter(token) {
   let route = new Router({
     mode: 'history',
     fallback: false,
@@ -48,7 +48,13 @@ export function createRouter() {
     ]
   })
   route.beforeEach((to, from, next) => {
-    console.log('beforeEach exect...')
+    console.log('beforeEach exect~~~ cookies ', token)
+    if (to.matched.some(r => r.meta.requireAuth) && !token) {
+      next('/')
+    }
+    // if (to.meta.requireAuth) {
+    //   next('/')
+    // }
     next()
   })
   return route
