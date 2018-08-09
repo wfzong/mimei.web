@@ -32,8 +32,7 @@ export default {
   // 初始化用户信息
   initToken: (state, authInfo) => {
     console.log('authInfo ', authInfo)
-    state.token = authInfo.token
-    // state.userinfo = authInfo.userinfo
+    Vue.set(state, 'token', authInfo.token)
     Vue.set(state, 'userinfo', authInfo.userinfo)
   }
 }

@@ -23,11 +23,6 @@
       <router-link :to="{ path: 'register' }">注册</router-link>
       <router-link :to="{ path: '/user' }">user</router-link>
     </p>
-    <p>
-      {{token}}
-      <hr>
-      {{userinfo}}
-    </p>
   </div>
 </template>
 <script>
@@ -58,6 +53,7 @@ export default {
               userinfo: res.userinfo,
               token: res.token
             })
+            this.$router.replace(this.$route.query.redirect || '/')
           } else {
             this.error = true
             this.errorInfo = res.error

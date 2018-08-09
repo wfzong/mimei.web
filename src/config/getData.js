@@ -1,7 +1,7 @@
 import { createAPI } from 'create-api'
 // import axios from 'axios'
 
-const host = 'https://api.mimei.net.cn/api/v1'
+const host = 'https://api.mimei.net.cn'
 
 export const getData = (url = '', data = {}, type = 'GET') => {
   console.log('getData executed... ')

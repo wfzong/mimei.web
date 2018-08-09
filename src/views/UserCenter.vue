@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     getUserinfo () {
-      return this.$store.state.userinfo
+      return JSON.parse(this.$store.state.userinfo)
     },
     getToken () {
       return this.$store.state.token

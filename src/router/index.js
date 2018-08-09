@@ -14,6 +14,7 @@ const Copyright = () => import('@/views/Copyright.vue')
 const AuthLayout = () => import('@/views/AuthLayout.vue')
 const Login = () => import('@/views/Login.vue')
 const UserCenter = () => import('@/views/UserCenter.vue')
+const Posts = () => import('@/views/Posts.vue')
 
 export function createRouter(token) {
   let route = new Router({
@@ -36,12 +37,22 @@ export function createRouter(token) {
         }
       },
       {
+        path: '/user/posts',
+        component: Posts,
+        meta: {
+          requireAuth: true
+        }
+      },
+      {
         path: '/auth/',
         component: AuthLayout,
         children: [
           {
             path: 'login/',
-            component: Login
+            component: Login,
+            meta: {
+              requireUnAuth: true
+            }
           }
         ]
       }
@@ -49,12 +60,18 @@ export function createRouter(token) {
   })
   route.beforeEach((to, from, next) => {
     console.log('beforeEach exect~~~ cookies ', token)
+    console.log(
+      'to.matched.some(r => r.meta.requireUnAuth) # ',
+      to.matched.some(r => r.meta.requireUnAuth)
+    )
     if (to.matched.some(r => r.meta.requireAuth) && !token) {
+      console.log('没权限#####A')
       next('/')
     }
-    // if (to.meta.requireAuth) {
-    //   next('/')
-    // }
+    if (to.matched.some(r => r.meta.requireUnAuth) && !!token) {
+      console.log('没权限#####B')
+      next('/')
+    }
     next()
   })
   return route

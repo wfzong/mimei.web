@@ -8,11 +8,11 @@ import { getData } from '@/config/getData'
  * @param {Number} data.limit - 取多少条
  * @returns {JSON} {}
  */
-export const getArticleList = data => getData('/article/', data)
+export const getArticleList = data => getData('/api/v1/article/', data)
 
 /**
  * @description 查询详细信息
  * @param {Number} data.id - 文章id
  * @returns {JSON} {}
  */
-export const getArticleDetails = data => getData('/article/' + data.id)
+export const getArticleDetails = data => getData('/api/v1/article/' + data.id)

@@ -15,7 +15,7 @@
 
 <script>
 
-import auth from '@/tools/auth'
+// import auth from '@/tools/auth'
 export default {
   data() {
     return {
@@ -24,7 +24,8 @@ export default {
   },
   computed: {
     loggedIn() {
-      return auth.loggedIn()
+      // return auth.loggedIn()
+      return this.$store.state.token
     }
   }
 }
