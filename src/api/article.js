@@ -16,3 +16,9 @@ export const getArticleList = data => getData('/api/v1/article/', data)
  * @returns {JSON} {}
  */
 export const getArticleDetails = data => getData('/api/v1/article/' + data.id)
+
+/**
+ * @description 获取文章分类列表
+ * @returns {JSON} {}
+ */
+export const getArticleCategory = data => getData('/api/v1/category/')
