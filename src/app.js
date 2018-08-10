@@ -7,6 +7,10 @@ import { sync } from 'vuex-router-sync'
 
 Vue.use(VueCookies)
 
+if (process.browser) { // for editor directive
+  let VueQuillEditor = require('vue-quill-editor/dist/ssr')
+  Vue.use(VueQuillEditor)
+}
 export function createApp(cookies) {
   // create store and router instances
   const store = createStore()
