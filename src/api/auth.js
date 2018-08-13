@@ -11,4 +11,4 @@ export const loginRequest = data => getData('/api/v1/tokens/', data, 'post')
  * @description 获取七牛云上传token
  * @returns {JSON} {}
  */
-export const getUploadToken = () => getData('/api/v1/uploads/')
+export const getRemoteUploadToken = () => getData('/api/v1/uploads/')

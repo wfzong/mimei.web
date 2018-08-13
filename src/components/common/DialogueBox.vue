@@ -1,6 +1,6 @@
 <template>
   <transition name="modal">
-    <div class="modal-mask">
+    <div class="modal-mask" @click.stop="close">
       <div class="modal-wrapper">
         <div class="modal-container">
 
@@ -22,6 +22,11 @@
 export default {
   data () {
     return {
+    }
+  },
+  methods: {
+    close: function () {
+      this.$emit('close')
     }
   }
 }

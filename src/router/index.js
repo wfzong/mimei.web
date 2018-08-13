@@ -24,7 +24,7 @@ export function createRouter(token) {
     routes: [
       { path: '/', component: Home },
       { path: '/list/', component: List },
-      { path: '/item/:id', component: Item },
+      { name: 'item', path: '/item/:id', component: Item },
       { path: '/about/', component: About },
       { path: '/contact/', component: Contact },
       { path: '/privacy/', component: Privacy },

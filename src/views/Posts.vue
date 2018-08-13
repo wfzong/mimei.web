@@ -1,6 +1,6 @@
 <template>
   <div class="post-area">
-    <h2>发表文章 {{ $route.query.id }}</h2>
+    <h2>{{ $route.query.id?'更新文章':'发表文章' }}</h2>
     <form @submit.prevent="postArticle">
       <ul class="data-cell">
         <li class="title">
@@ -78,9 +78,7 @@
           <!-- <quill-editor v-model="artData.content" ref="myQuillEditor" :options="editorOption" @blur="onEditorBlur($event)" @focus="onEditorFocus($event)" @ready="onEditorReady($event)">
           </quill-editor> -->
 
-          <div ref="myQuillEditor" class="quill-editor" :content="artData.content" @change="onEditorChange($event)" v-quill:myQuillEditor="editorOption">
-          </div>
-
+          <div ref="myQuillEditor" class="quill-editor" :content="artData.content" v-quill:myQuillEditor="editorOption" @change="onEditorChange($event)" @blur="onEditorBlur($event)" @focus="onEditorFocus($event)" @ready="onEditorReady($event)"></div>
         </li>
       </ul>
       <ul class="data-cell">
@@ -92,10 +90,11 @@
         </li>
       </ul>
     </form>
-    <DialogueBox v-if="imgUploading">
+    <DialogueBox v-if="imgUploading" @close="closeMe">
       <h4 slot="header">{{uploadingMsg}}</h4>
-      <p v-if="this.uploadLinks.length" slot="button">
-        <router-link v-for="item in this.uploadLinks" :key="item.title" :to="{path:item.path,query:item.params}">{{item.title}}</router-link>
+      <p slot="button">
+        <!-- <router-link v-for="item in this.uploadLinks" :key="item.title" :to="{path:item.path}">{{item.title}}</router-link> -->
+        <router-link to="/">返回首页</router-link>
       </p>
     </DialogueBox>
 
@@ -104,14 +103,14 @@
 
 
 <script>
-import { getArticleCategory } from '@/api/article'
+import { getArticleCategory, getArticleDetails, updateArticle, addArticle } from '@/api/article'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
-import axios from 'axios'
+// import axios from 'axios'
 // import auth from "../auth"
-import store from '../store'
+// import store from '../store'
 import * as config from '@/config/config'
 import * as unity from '@/tools/unity'
 
@@ -124,10 +123,8 @@ export default {
       isUpdate: false, // 默认为发布新文章，true为更新文章
       imgUploading: false,
       uploadingMsg: 'Default message',
-      uploadLinks: [
-      ],
       photoAreas: [],
-      artData: {},
+      artData: { content: '' },
       editorOption: {// 编辑器配置
         modules: {
           toolbar: {
@@ -150,7 +147,8 @@ export default {
       return this.$refs.myQuillEditor.quill
     },
     token () {
-      return store.getters.getMyToken
+      // return store.getters.getMyToken
+      return this.$store.state.token
     },
     photoAreaCount () {
       return this.photoAreas.length
@@ -165,28 +163,11 @@ export default {
     }
   },
   methods: {
+    closeMe () {
+      // alert('closeme')
+      this.imgUploading = false
+    },
     postArticle () { // 发布/更新 文章
-      let links = // 发布/更新 后跳转的链接
-        [
-          {
-            title: '返回首页',
-            path: '/'
-          },
-          {
-            title: '查看文章',
-            path: '/article/view',
-            params: {
-              id: 'artid'
-            }
-          },
-          {
-            title: '修改文章',
-            path: '/user/posts',
-            params: {
-              id: 'artid'
-            }
-          }
-        ]
       let pushData = { // 文章主体数据
         token: this.token,
         title: this.artData.title,
@@ -200,14 +181,15 @@ export default {
 
       }
       if (this.artData.categorySelected.length > 0) {
-        let postHandler = this.isUpdate ? axios.put(config.articleApi + this.$route.query.id, pushData) : axios.post(config.articleApi, pushData)
+        // let postHandler = this.isUpdate ? axios.put(config.articleApi + this.$route.query.id, pushData) : axios.post(config.articleApi, pushData)
+        let postHandler = this.isUpdate ? updateArticle(pushData, this.$route.query.id) : addArticle(pushData)
         postHandler.then((response) => {
           console.log(response)
-          if (response.data.authorized) {
+          if (response.authorized) {
             let msg = this.isUpdate ? '更新成功！' : '发面成功！'
-            this.showMsgBox(msg, links)
+            this.showMsgBox(msg)
           } else {
-            this.alertMsgBox(response.data.info)
+            this.alertMsgBox(response.info)
           }
         })
           .catch((error) => {
@@ -248,9 +230,6 @@ export default {
     showMsgBox (msg, links = []) {
       this.imgUploading = true
       this.uploadingMsg = msg
-      if (links.length > 0) {
-        this.uploadLinks = links
-      }
     },
     alertMsgBox (msg, time = 2000) {
       this.uploadingMsg = msg
@@ -277,14 +256,18 @@ export default {
       console.log(hash)
       console.log(this.photoAreas)
     },
-    onEditorBlur () {
-
+    onEditorChange ({ quill, html, text }) {
+      console.log('editor change!', quill, html, text)
+      this.artData.content = html
     },
-    onEditorFocus () {
-
+    onEditorBlur (e) {
+      console.log('onEditorBlur', e)
     },
-    onEditorReady () {
-
+    onEditorFocus (e) {
+      console.log('onEditorFocus', e)
+    },
+    onEditorReady (e) {
+      console.log('onEditorReady', e)
     },
     fetchData () {
       // 初始化文章数据
@@ -316,41 +299,33 @@ export default {
         })
     },
     fetchCategory () { // 获取文章分类
-      return new Promise((resolve, reject) => {
-        getArticleCategory()
-          .then((res) => {
-            this.artData.category = res
-            resolve(res)
-          })
-          .catch((err) => {
-            reject(err)
-          })
-      })
+      return getArticleCategory()
+        .then((res) => {
+          this.artData.category = res
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     },
     fetchArticleContent (id) {
-      return new Promise((resolve, reject) => {
-        axios.get(config.articleApi + id)
-          .then((res) => {
-            console.log(res)
-            this.artData.title = res.data.title
+      return getArticleDetails({ id })
+        .then((res) => {
+          console.log(res)
+          this.artData.title = res.title
 
-            res.data.categories.forEach(function (element) { // 将已经选择的文章分类回填回去
-              this.artData.categorySelected.push(element.id)
-            }, this)
-            this.artData.artType = res.data.artType
-            this.artData.desc = res.data.description
-            this.artData.recommend = res.data.recommend
-            this.artData.content = res.data.content
-            this.artData.imgShow = JSON.parse(res.data.imgShow)
-            this.photoAreas = JSON.parse(res.data.imgContent)
-
-            resolve(res)
-          })
-          .catch((err) => {
-            console.log(err)
-            reject(err)
-          })
-      })
+          res.categories.forEach(function (element) { // 将已经选择的文章分类回填回去
+            this.artData.categorySelected.push(element.id)
+          }, this)
+          this.artData.artType = res.artType
+          this.artData.desc = res.description
+          this.artData.recommend = res.recommend
+          this.artData.content = res.content
+          this.artData.imgShow = JSON.parse(res.imgShow)
+          this.photoAreas = JSON.parse(res.imgContent)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   },
   watch: {

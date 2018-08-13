@@ -11,7 +11,8 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
+import { getRemoteUploadToken } from '@/api/auth'
 import * as config from '@/config/config'
 // import auth from '../../auth'
 
@@ -71,32 +72,43 @@ export default {
         this.$emit('updateTitle', titleInfo)
       }
     },
+    getUploadToken () {
+      return new Promise((resolve, reject) => {
+        if (sessionStorage.getItem('uploadToken')) {
+          resolve(sessionStorage.getItem('uploadToken'))
+        } else {
+          getRemoteUploadToken().then(res => {
+            resolve(res.uploadToken)
+          })
+        }
+      })
+    },
     handleUpload (e) {
       const self = this
       if (/(\.jpg$|\.png$|\.gif$)/.test(e.target.value)) {
         self.$emit('uploading', '图片上传中...')
-        // auth.getUploadToken()
-        //   .then(function (uploadToken) {
-        //     const fd = new FormData()
-        //     fd.append('file', e.target.files[0])
-        //     fd.append('token', uploadToken)
-        //     axios.post('http://up.qiniu.com', fd)
-        //       .then(function (res) {
-        //         console.log(res)
-        //         self.info.imgHash = res.data.key
-        //         const imageHashInfo = {
-        //           hash: self.info.hash,
-        //           imgHash: self.info.imgHash
-        //         }
-        //         self.$emit('uploadDone', imageHashInfo)
-        //       })
-        //       .catch(function (error) {
-        //         console.log(error)
-        //       })
-        //   })
-        //   .catch(function (err) {
-        //     console.log(err)
-        //   })
+        this.getUploadToken()
+          .then(function (uploadToken) {
+            const fd = new FormData()
+            fd.append('file', e.target.files[0])
+            fd.append('token', uploadToken)
+            axios.post('http://up.qiniu.com', fd)
+              .then(function (res) {
+                console.log(res)
+                self.info.imgHash = res.key
+                const imageHashInfo = {
+                  hash: self.info.hash,
+                  imgHash: self.info.imgHash
+                }
+                self.$emit('uploadDone', imageHashInfo)
+              })
+              .catch(function (error) {
+                console.log(error)
+              })
+          })
+          .catch(function (err) {
+            console.log(err)
+          })
       } else {
         self.$emit('notice', '只支持上传图片哦！')
       }
