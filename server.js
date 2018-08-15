@@ -90,7 +90,7 @@ function render(req, res) {
   // console.log('Cookies: ', req.cookies)
 
   const context = {
-    title: 'Vue HN 2.0', // default title
+    title: '迷魅图片', // default title
     url: req.url,
     cookies: req.cookies
   }
