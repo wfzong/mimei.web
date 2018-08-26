@@ -43,6 +43,9 @@ export default {
 
     }
   },
+  title () {
+    return '用户中心'
+  },
   methods: {
 
   },

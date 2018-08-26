@@ -4,8 +4,10 @@ import App from './App.vue'
 import { createStore } from './store'
 import { createRouter } from './router'
 import { sync } from 'vuex-router-sync'
+import titleMixin from '@/tools/title'
 
 Vue.use(VueCookies)
+Vue.mixin(titleMixin)
 
 if (process.browser) { // for editor directive
   let VueQuillEditor = require('vue-quill-editor/dist/ssr')

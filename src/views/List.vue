@@ -41,6 +41,9 @@ export default {
       return this.$store.state.lists.list
     }
   },
+  title () {
+    return this.catInfo && this.catInfo.title ? this.catInfo.title : '图片及文章'
+  },
   created () {
   },
   watch: {
