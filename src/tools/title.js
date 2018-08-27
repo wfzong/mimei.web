@@ -1,14 +1,12 @@
-function getTitle (vm) {
+function getTitle(vm) {
   const { title } = vm.$options
   if (title) {
-    return typeof title === 'function'
-      ? title.call(vm)
-      : title
+    return typeof title === 'function' ? title.call(vm) : title
   }
 }
 
 const serverTitleMixin = {
-  created () {
+  created() {
     const title = getTitle(this)
     if (title) {
       this.$ssrContext.title = `迷魅图片 | ${title}`
@@ -17,15 +15,16 @@ const serverTitleMixin = {
 }
 
 const clientTitleMixin = {
-  mounted () {
+  mounted() {
     this.running()
   },
-  //   updated () {
-  //     console.log('updated hook running ###')
-  //     // this.running()
-  //   },
+  watch: {
+    $route: function() {
+      this.running()
+    }
+  },
   methods: {
-    running () {
+    running() {
       const title = getTitle(this)
       if (title) {
         document.title = `迷魅图片 | ${title}`
@@ -34,6 +33,6 @@ const clientTitleMixin = {
   }
 }
 
-export default process.env.VUE_ENV === 'server'
+export default (process.env.VUE_ENV === 'server'
   ? serverTitleMixin
-  : clientTitleMixin
+  : clientTitleMixin)
