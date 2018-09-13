@@ -42,6 +42,9 @@ export default {
   },
   asyncData ({ store }) {
     return store.dispatch('FETCH_INDEX_DATA')
+  },
+  title () {
+    return '网站首页'
   }
 }
 </script>

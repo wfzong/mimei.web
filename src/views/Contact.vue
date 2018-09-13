@@ -17,6 +17,9 @@ import FullScreenMessage from '@/components/common/FullScreenMessage.vue'
 export default {
   components: {
     FullScreenMessage
+  },
+  title () {
+    return '联系我们'
   }
 }
 </script>

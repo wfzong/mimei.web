@@ -43,6 +43,10 @@ export default {
   },
   asyncData ({ store, route }) {
     return store.dispatch('FETCH_ITEM_DATA', route.params)
+  },
+  title() {
+    console.log('this.post', this.post)
+    return this.post.title
   }
 }
 </script>

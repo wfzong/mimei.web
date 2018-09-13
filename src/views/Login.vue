@@ -77,6 +77,9 @@ export default {
   mounted () {
     console.log(this.$store)
     console.log(this.$cookies.isKey('token'))
+  },
+  title () {
+    return '用户登录'
   }
 }
 </script>
