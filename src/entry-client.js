@@ -1,23 +1,23 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 import 'es6-promise/auto'
 import { createApp } from '@/app'
 // a global mixin that calls `asyncData` when a route component's params change
-// Vue.mixin({
-//   beforeRouteUpdate(to, from, next) {
-//     console.log('beforeRouteUpdate:---')
-//     const { asyncData } = this.$options
-//     if (asyncData) {
-//       asyncData({
-//         store: this.$store,
-//         route: to
-//       })
-//         .then(next)
-//         .catch(next)
-//     } else {
-//       next()
-//     }
-//   }
-// })
+Vue.mixin({
+  beforeRouteUpdate(to, from, next) {
+    console.log('beforeRouteUpdate:---')
+    const { asyncData } = this.$options
+    if (asyncData) {
+      asyncData({
+        store: this.$store,
+        route: to
+      })
+        .then(next)
+        .catch(next)
+    } else {
+      next()
+    }
+  }
+})
 console.log('window.$cookies', window.$cookies.get('token'))
 const { app, router, store } = createApp(window.$cookies.get('token'))
 
