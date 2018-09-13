@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const base = require('./webpack.base.config')
-const nodeExternals = require('webpack-node-externals')
+const nodeExternals = require('webpack-node-externals') // Webpack allows you to define externals - modules that should not be bundled.
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 
 module.exports = merge(base, {
@@ -21,6 +21,7 @@ module.exports = merge(base, {
   // https://github.com/liady/webpack-node-externals
   externals: nodeExternals({
     // do not externalize CSS files in case we need to import it from a dep
+    // 防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
     whitelist: /\.css$/
   }),
   plugins: [
