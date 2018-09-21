@@ -81,10 +81,10 @@ export default {
         position: relative;
 
         .card_item_image {
-          //background: #EEE;
+          background: #EEE;
+          min-height: 230px;
           img {
             width: 100%;
-            height: auto;
             vertical-align: middle;
           }
         }
