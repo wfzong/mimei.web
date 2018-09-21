@@ -49,8 +49,8 @@ export default {
 
 
 <style lang="scss">
-@import "~@/scss/common/variable";
-@import "~@/scss/common/mixin";
+@import '~@/scss/common/variable';
+@import '~@/scss/common/mixin';
 
 .card_content {
   max-width: $SECTION_WIDTH_MAXIMUM;
@@ -81,11 +81,22 @@ export default {
         position: relative;
 
         .card_item_image {
+          position: relative;
           background: #EEE;
-          min-height: 230px;
-          img {
-            width: 100%;
-            vertical-align: middle;
+          &::before {
+            content: '';
+            display: block;
+            padding-top: 100%;
+          }
+          a {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            img {
+              width: 100%;
+              vertical-align: middle;
+            }
           }
         }
 
